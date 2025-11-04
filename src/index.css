@@ -1,0 +1,662 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+ 
+    --primary: 222.2 47.4% 11.2%;
+    --primary-light: 222.2 47.4% 18%;
+    --primary-dark: 222.2 47.4% 8%;
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+ 
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+ 
+    --radius: 0.5rem;
+    
+    /* 间距变量 */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+  }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 210 40% 98%;
+    --primary-light: 210 40% 100%;
+    --primary-dark: 210 40% 85%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    
+    /* 间距变量 - 与浅色模式保持一致 */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* 护眼模式样式 */
+.eye-protection {
+  background-color: #f5f5dc !important;
+  color: #333 !important;
+}
+
+.eye-protection .bg-white {
+  background-color: #f5f5dc !important;
+}
+
+.eye-protection .bg-gray-50 {
+  background-color: #f0f0d0 !important;
+}
+
+.eye-protection .bg-gray-100 {
+  background-color: #e8e8c8 !important;
+}
+
+.eye-protection .bg-gray-200 {
+  background-color: #e0e0b8 !important;
+}
+
+.eye-protection .text-gray-900 {
+  color: #333 !important;
+}
+
+.eye-protection .text-gray-600 {
+  color: #555 !important;
+}
+
+.eye-protection .text-gray-500 {
+  color: #666 !important;
+}
+
+.eye-protection .border-gray-200 {
+  border-color: #d0d0a8 !important;
+}
+
+.eye-protection .border-gray-300 {
+  border-color: #c0c098 !important;
+}
+
+/* 透明模式样式 - 液态玻璃效果 */
+.transparent-mode {
+  background-color: transparent !important;
+  /* 移除背景色，确保能看到底层内容 */
+}
+
+.transparent-mode body {
+  background-color: transparent !important;
+  color: inherit !important;
+  /* 完全透明，让背景内容可见 */
+}
+
+/* 主要容器 - 增强液态玻璃效果 */
+.transparent-mode:not(.dark) .min-h-screen {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 侧边栏液态玻璃效果 */
+.transparent-mode:not(.dark) .border-r {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* 任务项和卡片的液态玻璃效果 */
+.transparent-mode:not(.dark) .bg-white,
+.transparent-mode:not(.dark) .task-item {
+  background: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
+  color: inherit !important;
+  transition: all 0.3s ease !important;
+}
+
+.transparent-mode:not(.dark) .bg-white:hover,
+.transparent-mode:not(.dark) .task-item:hover {
+  background: rgba(255, 255, 255, 0.65) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* 灰色背景元素的液态玻璃效果 */
+.transparent-mode:not(.dark) .bg-gray-50 {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* 输入框和按钮的液态玻璃效果 */
+.transparent-mode:not(.dark) input,
+.transparent-mode:not(.dark) select,
+.transparent-mode:not(.dark) button,
+.transparent-mode:not(.dark) .date-navigation,
+.transparent-mode:not(.dark) .search-input,
+.transparent-mode:not(.dark) .filter-buttons {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  color: inherit !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+  transition: all 0.2s ease !important;
+}
+
+.transparent-mode:not(.dark) input:focus,
+.transparent-mode:not(.dark) select:focus {
+  border-color: rgba(59, 130, 246, 0.8) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+  outline: none !important;
+}
+
+.transparent-mode:not(.dark) button:hover {
+  background: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* 深色模式基础样式 - 优先处理 */
+.dark .bg-white,
+.dark .task-item {
+  background: hsl(var(--card)) !important;
+  color: white !important;
+}
+
+/* 确保任务列表和设置页面中的文字清晰可见 */
+.dark .task-item *,
+.dark .text-gray-600,
+.dark .text-gray-500,
+.dark .text-gray-400,
+.dark .text-gray-300,
+.dark .settings-page *,
+.dark .settings-container * {
+  color: white !important;
+}
+
+/* 深色模式输入框和按钮基础样式 */
+.dark input,
+.dark select,
+.dark button,
+.dark .date-navigation,
+.dark .search-input,
+.dark .filter-buttons {
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+
+/* 深色模式下的液态玻璃效果 */
+.transparent-mode.dark .min-h-screen {
+  background: rgba(30, 41, 59, 0.6) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 深色模式侧边栏 */
+.transparent-mode.dark .border-r {
+  background: rgba(30, 41, 59, 0.7) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 深色模式任务项和卡片 */
+.transparent-mode.dark .bg-white,
+.transparent-mode.dark .task-item,
+.transparent-mode.dark .bg-gray-50,
+.transparent-mode.dark .bg-gray-900,
+.transparent-mode.dark .bg-gray-800 {
+  background: rgba(30, 41, 59, 0.55) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+  color: inherit !important;
+}
+
+.transparent-mode.dark .bg-white:hover,
+.transparent-mode.dark .task-item:hover {
+  background: rgba(30, 41, 59, 0.75) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* 深色模式输入框和按钮 */
+.transparent-mode.dark input,
+.transparent-mode.dark select,
+.transparent-mode.dark button,
+.transparent-mode.dark .date-navigation,
+.transparent-mode.dark .search-input,
+.transparent-mode.dark .filter-buttons,
+.transparent-mode.dark .task-status-filter,
+.transparent-mode.dark .time-range-picker,
+.transparent-mode.dark .shortcut-display {
+  background: rgba(30, 41, 59, 0.6) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.transparent-mode.dark input:focus,
+.transparent-mode.dark select:focus {
+  border-color: rgba(59, 130, 246, 0.6) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+  outline: none !important;
+}
+
+.transparent-mode.dark button:hover {
+  background: rgba(30, 41, 59, 0.8) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* 深色模式日期选择器样式 */
+.transparent-mode.dark .react-datepicker {
+  background: rgba(30, 41, 59, 0.8) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25) !important;
+}
+
+.transparent-mode.dark .react-datepicker__header {
+  background: rgba(30, 41, 59, 0.85) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.transparent-mode.dark .react-datepicker__day,
+.transparent-mode.dark .react-datepicker__month-text,
+.transparent-mode.dark .react-datepicker__quarter-text,
+.transparent-mode.dark .react-datepicker__year-text {
+  color: #e2e8f0 !important;
+}
+
+.transparent-mode.dark .react-datepicker__day:hover,
+.transparent-mode.dark .react-datepicker__month-text:hover,
+.transparent-mode.dark .react-datepicker__quarter-text:hover,
+.transparent-mode.dark .react-datepicker__year-text:hover {
+  background: rgba(59, 130, 246, 0.1) !important;
+  color: #f1f5f9 !important;
+}
+
+.transparent-mode.dark .react-datepicker__day--selected {
+  background: rgba(59, 130, 246, 0.7) !important;
+  color: white !important;
+}
+
+/* 深色模式设置页面样式 */
+.transparent-mode.dark .settings-container,
+.transparent-mode.dark .settings-page {
+  background: rgba(30, 41, 59, 0.65) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 12px !important;
+}
+
+/* 深色模式卡片和弹窗样式 */
+.transparent-mode.dark .card,
+.transparent-mode.dark .modal,
+.transparent-mode.dark .dialog,
+.transparent-mode.dark .dropdown {
+  background: rgba(30, 41, 59, 0.75) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* 布局样式 - sidebar-left和sidebar-right */
+.sidebar-left .sidebar {
+  left: 0;
+  right: auto;
+  transform: translateX(0);
+}
+
+.sidebar-left .main-content {
+  margin-left: 240px;
+  margin-right: 0;
+}
+
+.sidebar-right .sidebar {
+  left: auto;
+  right: 0;
+  transform: translateX(0);
+}
+
+.sidebar-right .main-content {
+  margin-left: 0;
+  margin-right: 240px;
+}
+
+/* 侧边栏折叠状态 */
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.main-content.sidebar-collapsed {
+  margin-left: 60px !important;
+  margin-right: 0 !important;
+}
+
+/* 密度变体样式 */
+.density-compact * {
+  --spacing-xs: 0.125rem;
+  --spacing-sm: 0.25rem;
+  --spacing-md: 0.5rem;
+  --spacing-lg: 0.75rem;
+  --spacing-xl: 1rem;
+}
+
+.density-compact .task-item,
+.density-compact .card {
+  padding: var(--spacing-sm);
+}
+
+.density-compact .button,
+.density-compact button {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.875rem;
+}
+
+.density-spacious * {
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1.25rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+}
+
+.density-spacious .task-item,
+.density-spacious .card {
+  padding: var(--spacing-md);
+}
+
+.density-spacious .button,
+.density-spacious button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 1.125rem;
+}
+
+/* 应用间距变量到通用元素 */
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+.m-xs { margin: var(--spacing-xs); }
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+.m-xl { margin: var(--spacing-xl); }
+
+/* 主题颜色应用到关键UI元素 */
+.btn-primary,
+.button-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary-dark);
+}
+
+.btn-primary:hover,
+.button-primary:hover {
+  background-color: var(--primary-light);
+}
+
+/* 主应用容器样式 */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.main-content {
+  flex: 1;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+/* 滚动条样式优化 */
+.transparent-mode ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* 浅色模式滚动条 */
+.transparent-mode:not(.dark) ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.transparent-mode:not(.dark) ::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 4px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+/* 深色模式滚动条 */
+.transparent-mode.dark ::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.transparent-mode.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  border: 2px solid rgba(30, 41, 59, 0.5);
+}
+
+.transparent-mode ::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.5);
+}
+
+.transparent-mode.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* 确保文字清晰可读但不强制改变原有颜色 */
+.transparent-mode .text-gray-900,
+.transparent-mode .text-gray-600,
+.transparent-mode .text-gray-500,
+.transparent-mode .text-white,
+.transparent-mode .text-gray-100 {
+  color: inherit !important;
+  text-shadow: none !important;
+}
+
+/* 增强边框效果 */
+.transparent-mode * {
+  border-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.transparent-mode.dark * {
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* 日期选择器样式 */
+.react-datepicker {
+  font-family: inherit;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.react-datepicker__header {
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.react-datepicker__day--selected {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+/* 侧边栏自动隐藏功能 */
+@media (min-width: 768px) {
+  .sidebar-auto-hide .sidebar-container {
+    width: 80px;
+    transition: width 0.3s ease;
+  }
+  
+  .sidebar-auto-hide .sidebar-container:hover {
+    width: 250px;
+  }
+  
+  .sidebar-auto-hide .sidebar-title,
+  .sidebar-auto-hide .sidebar-item-text,
+  .sidebar-auto-hide .sidebar-divider,
+  .sidebar-auto-hide .sidebar-footer {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  
+  .sidebar-auto-hide .sidebar-container:hover .sidebar-title,
+  .sidebar-auto-hide .sidebar-container:hover .sidebar-item-text,
+  .sidebar-auto-hide .sidebar-container:hover .sidebar-divider,
+  .sidebar-auto-hide .sidebar-container:hover .sidebar-footer {
+    opacity: 1;
+  }
+  
+  .sidebar-auto-hide .sidebar-item {
+    padding: 0.75rem;
+    justify-content: center;
+  }
+  
+  .sidebar-auto-hide .sidebar-container:hover .sidebar-item {
+    justify-content: flex-start;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* 紧凑模式 */
+.compact-mode .task-item {
+  padding: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.compact-mode .task-item-content {
+  font-size: 0.875rem;
+}
+
+.compact-mode .task-meta {
+  font-size: 0.75rem;
+}
+
+/* 布局变体样式 */
+.layout-compact .container {
+  max-width: 1024px;
+}
+
+.layout-expanded .container {
+  max-width: 1400px;
+}
+
+/* 密度变体样式 */
+.density-compact .task-item {
+  padding: 0.5rem;
+}
+
+.density-spacious .task-item {
+  padding: 1rem;
+}
+
+.density-spacious .task-form {
+  padding: 1rem;
+}
+
+.react-datepicker__day--selected {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: #e0f2fe !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
