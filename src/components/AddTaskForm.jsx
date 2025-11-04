@@ -43,11 +43,16 @@ const AddTaskForm = ({ onAddTask, isLoading }) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  // 从body元素获取透明模式状态
+  const isTransparentMode = document.body.classList.contains('transparent-mode');
+
   if (!isExpanded) {
     return (
       <button
         onClick={() => setIsExpanded(true)}
-        className="w-full p-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-blue-400 hover:text-blue-600 transition-colors flex items-center justify-center space-x-2"
+        className={`w-full p-3 border-2 border-dashed rounded-lg text-gray-500 hover:border-blue-400 hover:text-blue-600 transition-colors flex items-center justify-center space-x-2 ${
+          isTransparentMode ? 'border-gray-300/50 glass-card' : 'border-gray-300'
+        }`}
       >
         <Plus className="w-4 h-4" />
         <span className="text-sm">添加新任务</span>
@@ -56,7 +61,9 @@ const AddTaskForm = ({ onAddTask, isLoading }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="p-3 border rounded-lg bg-white shadow-sm">
+    <form onSubmit={handleSubmit} className={`p-3 border rounded-lg shadow-sm ${
+      isTransparentMode ? 'glass-card' : 'bg-white'
+    }`}>
       <div className="space-y-3">
         <div>
           <input
@@ -64,7 +71,7 @@ const AddTaskForm = ({ onAddTask, isLoading }) => {
             value={formData.content}
             onChange={(e) => handleInputChange('content', e.target.value)}
             placeholder="输入任务内容..."
-            className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+            className="w-full p-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm glass-input"
             autoFocus
           />
         </div>
@@ -75,7 +82,7 @@ const AddTaskForm = ({ onAddTask, isLoading }) => {
             <select
               value={formData.priority}
               onChange={(e) => handleInputChange('priority', e.target.value)}
-              className="px-2 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              className="px-2 py-1.5 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm glass-input"
             >
               <option value="low">低优先级</option>
               <option value="medium">中优先级</option>
@@ -89,7 +96,7 @@ const AddTaskForm = ({ onAddTask, isLoading }) => {
               type="date"
               value={formData.dueDate}
               onChange={(e) => handleInputChange('dueDate', e.target.value)}
-              className="px-2 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              className="px-2 py-1.5 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm glass-input"
             />
           </div>
         </div>

@@ -13,28 +13,29 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
  
-    --primary: 222.2 47.4% 11.2%;
-    --primary-light: 222.2 47.4% 18%;
-    --primary-dark: 222.2 47.4% 8%;
+    /* 浅绿色主题 */
+    --primary: 152 89% 38%; /* #10b981 */
+    --primary-light: 142 76% 46%; /* #34d399 */
+    --primary-dark: 152 89% 28%; /* #059669 */
     --primary-foreground: 210 40% 98%;
- 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    
+    --secondary: 219 90% 52%; /* #3b82f6 */
+    --secondary-foreground: 210 40% 98%;
  
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
  
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 147 50% 47%; /* 浅绿色强调色 */
+    --accent-foreground: 210 40% 98%;
  
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 152 89% 38%; /* 浅绿色边框高亮 */
  
-    --radius: 0.5rem;
+    --radius: 0.75rem; /* 增大圆角更适合玻璃效果 */
     
     /* 间距变量 */
     --spacing-xs: 0.25rem;
@@ -42,6 +43,33 @@
     --spacing-md: 1rem;
     --spacing-lg: 1.5rem;
     --spacing-xl: 2rem;
+    
+    /* 液态玻璃效果变量 - 增强模糊度和透明度 */
+    --glass-blur: 30px; /* 从20px增加到30px，增强模糊效果 */
+    --glass-border-radius: 12px;
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* 增强阴影效果 */
+    
+    /* 浅色模式玻璃效果 - 增强透明度 */
+    --glass-bg-light: rgba(255, 255, 255, 0.7); /* 从0.8降低到0.7，增强透明度 */
+    --glass-bg-light-hover: rgba(255, 255, 255, 0.85); /* 从0.9降低到0.85 */
+    --glass-border-light: rgba(255, 255, 255, 0.5); /* 从0.7降低到0.5，增强透明度 */
+    --glass-border-light-hover: rgba(255, 255, 255, 0.8); /* 从0.9降低到0.8 */
+    --glass-input-bg-light: rgba(255, 255, 255, 0.6); /* 从0.7降低到0.6 */
+    --glass-input-bg-light-focus: rgba(255, 255, 255, 0.8); /* 从0.9降低到0.8 */
+    --glass-input-border-light: rgba(255, 255, 255, 0.4); /* 从0.6降低到0.4 */
+    
+    /* 深色模式玻璃效果 - 增强透明度 */
+    --glass-bg-dark: rgba(255, 255, 255, 0.1); /* 从0.15降低到0.1，增强透明度 */
+    --glass-bg-dark-hover: rgba(30, 41, 59, 0.8); /* 从0.9降低到0.8 */
+    --glass-border-dark: rgba(255, 255, 255, 0.15); /* 从0.2降低到0.15，增强透明度 */
+    --glass-border-dark-hover: rgba(255, 255, 255, 0.25); /* 从0.3降低到0.25 */
+    --glass-input-bg-dark: rgba(255, 255, 255, 0.15); /* 从0.2降低到0.15 */
+    --glass-input-bg-dark-focus: rgba(45, 55, 72, 0.8); /* 从0.9降低到0.8 */
+    --glass-input-border-dark: rgba(255, 255, 255, 0.2); /* 从0.3降低到0.2 */
+    
+    /* 浅绿色渐变背景 */
+    --bg-gradient-light: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 50%, #f0fdf4 100%);
+    --bg-gradient-dark: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.05) 50%, rgba(16, 185, 129, 0.1) 100%);
   }
  
   .dark {
@@ -54,18 +82,19 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
  
-    --primary: 210 40% 98%;
-    --primary-light: 210 40% 100%;
-    --primary-dark: 210 40% 85%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* 浅绿色主题 - 深色模式 */
+    --primary: 142 76% 46%; /* #34d399 */
+    --primary-light: 142 76% 60%;
+    --primary-dark: 152 89% 38%; /* #10b981 */
+    --primary-foreground: 210 40% 98%;
  
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 219 90% 52%; /* #3b82f6 */
     --secondary-foreground: 210 40% 98%;
  
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
  
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 147 50% 47%; /* 浅绿色强调色 */
     --accent-foreground: 210 40% 98%;
  
     --destructive: 0 62.8% 30.6%;
@@ -73,7 +102,7 @@
  
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 142 76% 46%; /* 浅绿色边框高亮 */
     
     /* 间距变量 - 与浅色模式保持一致 */
     --spacing-xs: 0.25rem;
@@ -99,126 +128,417 @@
   color: #333 !important;
 }
 
-.eye-protection .bg-white {
-  background-color: #f5f5dc !important;
+/* 透明模式基础设置 */
+body.transparent-mode {
+  background: var(--bg-gradient-light) !important;
+  background-attachment: fixed !important;
 }
 
-.eye-protection .bg-gray-50 {
-  background-color: #f0f0d0 !important;
+.dark body.transparent-mode {
+  background: var(--bg-gradient-dark) !important;
+  background-attachment: fixed !important;
 }
 
-.eye-protection .bg-gray-100 {
-  background-color: #e8e8c8 !important;
+/* 减少透明模式下的边距 */
+body.transparent-mode .flex-1,
+body.transparent-mode .main-content,
+body.transparent-mode .content-area,
+body.transparent-mode .container,
+body.transparent-mode .max-w-4xl {
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
 }
 
-.eye-protection .bg-gray-200 {
-  background-color: #e0e0b8 !important;
+body.transparent-mode .p-3 {
+  padding: 0.5rem !important;
 }
 
-.eye-protection .text-gray-900 {
-  color: #333 !important;
+body.transparent-mode .space-y-3 > * + * {
+  margin-top: 0.5rem !important;
 }
 
-.eye-protection .text-gray-600 {
-  color: #555 !important;
+/* 确保主容器透明 */
+.transparent-mode .app-container,
+.transparent-mode .main-content {
+  background: transparent !important;
 }
 
-.eye-protection .text-gray-500 {
-  color: #666 !important;
+/* 玻璃侧边栏效果 */
+.glass-sidebar {
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid var(--glass-border-light) !important;
+  box-shadow: var(--glass-shadow) !important;
 }
 
-.eye-protection .border-gray-200 {
-  border-color: #d0d0a8 !important;
+.transparent-mode.dark .glass-sidebar {
+  background: var(--glass-bg-dark) !important;
+  border: 1px solid var(--glass-border-dark) !important;
+  color: #ffffff !important;
 }
 
-.eye-protection .border-gray-300 {
-  border-color: #c0c098 !important;
+/* 通用玻璃效果类 */
+@layer utilities {
+  .glass-effect {
+    backdrop-filter: blur(var(--glass-blur)) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+    border-radius: var(--glass-border-radius) !important;
+    box-shadow: var(--glass-shadow) !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .glass-card {
+    backdrop-filter: blur(var(--glass-blur)) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+    border-radius: var(--glass-border-radius) !important;
+    box-shadow: var(--glass-shadow) !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .glass-input {
+    backdrop-filter: blur(var(--glass-blur)) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+    border-radius: var(--glass-border-radius) !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .glass-button {
+    backdrop-filter: blur(var(--glass-blur)) !important;
+    -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+    border-radius: var(--glass-border-radius) !important;
+    box-shadow: var(--glass-shadow) !important;
+    transition: all 0.3s ease !important;
+  }
 }
 
-/* 透明模式样式 - 液态玻璃效果 */
-.transparent-mode {
-  background-color: transparent !important;
-  /* 移除背景色，确保能看到底层内容 */
-}
-
-.transparent-mode body {
-  background-color: transparent !important;
-  color: inherit !important;
-  /* 完全透明，让背景内容可见 */
-}
-
-/* 主要容器 - 增强液态玻璃效果 */
-.transparent-mode:not(.dark) .min-h-screen {
-  background: rgba(255, 255, 255, 0.4) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* 侧边栏液态玻璃效果 */
-.transparent-mode:not(.dark) .border-r {
-  background: rgba(255, 255, 255, 0.5) !important;
-  backdrop-filter: blur(25px) !important;
-  -webkit-backdrop-filter: blur(25px) !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.4) !important;
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08) !important;
-}
-
-/* 任务项和卡片的液态玻璃效果 */
-.transparent-mode:not(.dark) .bg-white,
-.transparent-mode:not(.dark) .task-item {
-  background: rgba(255, 255, 255, 0.45) !important;
-  backdrop-filter: blur(15px) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.5) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
-  color: inherit !important;
+/* 浅色模式玻璃效果 - 应用到所有UI组件 */
+body.transparent-mode header,
+body.transparent-mode .navbar,
+body.transparent-mode .sidebar,
+body.transparent-mode .task-item,
+body.transparent-mode .card,
+body.transparent-mode .modal,
+body.transparent-mode .dialog,
+body.transparent-mode .dropdown,
+body.transparent-mode .bg-white,
+body.transparent-mode .bg-gray-50,
+body.transparent-mode .title-bg,
+body.transparent-mode .heading,
+body.transparent-mode .settings-container,
+body.transparent-mode .settings-page,
+body.transparent-mode .menu,
+body.transparent-mode .task-form,
+body.transparent-mode .add-task-form,
+body.transparent-mode .search-input,
+body.transparent-mode .filter-buttons,
+body.transparent-mode .task-status-filter,
+body.transparent-mode .time-range-picker,
+body.transparent-mode .shortcut-display,
+body.transparent-mode .input-group,
+body.transparent-mode .alert,
+body.transparent-mode .notification,
+body.transparent-mode .tooltip,
+body.transparent-mode .popover {
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid var(--glass-border-light) !important;
+  border-radius: var(--glass-border-radius) !important;
+  box-shadow: var(--glass-shadow) !important;
   transition: all 0.3s ease !important;
 }
 
-.transparent-mode:not(.dark) .bg-white:hover,
-.transparent-mode:not(.dark) .task-item:hover {
-  background: rgba(255, 255, 255, 0.65) !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
-  transform: translateY(-1px) !important;
+/* 浅色模式玻璃组件悬停效果 */
+body.transparent-mode .task-item:hover,
+body.transparent-mode .card:hover,
+body.transparent-mode .glass-card:hover {
+  background: var(--glass-bg-light-hover) !important;
+  border-color: var(--glass-border-light-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 浅色模式输入控件玻璃效果 */
+body.transparent-mode input,
+body.transparent-mode select,
+body.transparent-mode button,
+body.transparent-mode textarea,
+body.transparent-mode .date-navigation,
+body.transparent-mode .glass-input {
+  background: var(--glass-input-bg-light) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid var(--glass-input-border-light) !important;
+  border-radius: var(--glass-border-radius) !important;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 浅色模式输入控件聚焦效果 */
+.transparent-mode input:focus,
+.transparent-mode select:focus,
+.transparent-mode textarea:focus,
+.transparent-mode .glass-input:focus {
+  border-color: hsl(var(--ring)) !important;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25) !important;
+  outline: none !important;
+  background: var(--glass-input-bg-light-focus) !important;
+}
+
+/* 浅色模式按钮悬停效果 */
+.transparent-mode button:hover,
+.transparent-mode .glass-button:hover {
+  background: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 深色模式玻璃效果 - 应用到所有UI组件 */
+.dark body.transparent-mode header,
+.dark body.transparent-mode .navbar,
+.dark body.transparent-mode .sidebar,
+.dark body.transparent-mode .task-item,
+.dark body.transparent-mode .card,
+.dark body.transparent-mode .modal,
+.dark body.transparent-mode .dialog,
+.dark body.transparent-mode .dropdown,
+.dark body.transparent-mode .bg-white,
+.dark body.transparent-mode .bg-gray-50,
+.dark body.transparent-mode .bg-gray-900,
+.dark body.transparent-mode .bg-gray-800,
+.dark body.transparent-mode .title-bg,
+.dark body.transparent-mode .heading,
+.dark body.transparent-mode .settings-container,
+.dark body.transparent-mode .settings-page,
+.dark body.transparent-mode .menu,
+.dark body.transparent-mode .task-form,
+.dark body.transparent-mode .add-task-form,
+.dark body.transparent-mode .search-input,
+.dark body.transparent-mode .filter-buttons,
+.dark body.transparent-mode .task-status-filter,
+.dark body.transparent-mode .time-range-picker,
+.dark body.transparent-mode .shortcut-display,
+.dark body.transparent-mode .input-group,
+.dark body.transparent-mode .alert,
+.dark body.transparent-mode .notification,
+.dark body.transparent-mode .tooltip,
+.dark body.transparent-mode .popover {
+  background: var(--glass-bg-dark) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid var(--glass-border-dark) !important;
+  border-radius: var(--glass-border-radius) !important;
+  box-shadow: var(--glass-shadow) !important;
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 深色模式玻璃组件悬停效果 */
+.dark body.transparent-mode .task-item:hover,
+.dark body.transparent-mode .card:hover,
+.dark body.transparent-mode .glass-card:hover {
+  background: var(--glass-bg-dark-hover) !important;
+  border-color: var(--glass-border-dark-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 深色模式输入控件玻璃效果 */
+.dark body.transparent-mode input,
+.dark body.transparent-mode select,
+.dark body.transparent-mode button,
+.dark body.transparent-mode textarea,
+.dark body.transparent-mode .date-navigation {
+  background: var(--glass-input-bg-dark) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid var(--glass-input-border-dark) !important;
+  border-radius: var(--glass-border-radius) !important;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2) !important;
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 深色模式输入控件聚焦效果 */
+.dark body.transparent-mode input:focus,
+.dark body.transparent-mode select:focus,
+.dark body.transparent-mode textarea:focus,
+.dark body.transparent-mode .glass-input:focus {
+  border-color: rgba(59, 130, 246, 0.9) !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25) !important;
+  outline: none !important;
+  background: var(--glass-input-bg-dark-focus) !important;
+}
+
+/* 深色模式按钮悬停效果 */
+.dark body.transparent-mode button:hover,
+.dark body.transparent-mode .glass-button:hover {
+  background: rgba(45, 55, 72, 0.9) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 确保文字清晰可读 */
+body.transparent-mode .text-gray-900,
+body.transparent-mode .text-gray-600,
+body.transparent-mode .text-gray-500,
+body.transparent-mode .text-white,
+body.transparent-mode .text-gray-100 {
+  color: inherit !important;
+  text-shadow: none !important;
+}
+
+/* 任务项下拉菜单特殊样式 */
+body.transparent-mode .task-item .dropdown,
+.dark body.transparent-mode .task-item .dropdown {
+  background: inherit !important;
+  backdrop-filter: inherit !important;
+  -webkit-backdrop-filter: inherit !important;
+  border: inherit !important;
+  box-shadow: inherit !important;
+}
+
+body.eye-protection .bg-white {
+  background-color: #f5f5dc !important;
+}
+
+body.eye-protection .bg-gray-50 {
+  background-color: #f0f0d0 !important;
+}
+
+body.eye-protection .bg-gray-100 {
+  background-color: #e8e8c8 !important;
+}
+
+body.eye-protection .bg-gray-200 {
+  background-color: #e0e0b8 !important;
+}
+
+body.eye-protection .text-gray-900 {
+  color: #333 !important;
+}
+
+body.eye-protection .text-gray-600 {
+  color: #555 !important;
+}
+
+body.eye-protection .text-gray-500 {
+  color: #666 !important;
+}
+
+body.eye-protection .border-gray-200 {
+  border-color: #d0d0a8 !important;
+}
+
+body.eye-protection .border-gray-300 {
+  border-color: #c0c098 !important;
+}
+
+/* 透明模式样式 - 增强液态玻璃效果 */
+body.transparent-mode {
+  /* 添加全局背景渐变，使用浅天空蓝色 */
+  background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 50%, #87CEFA 100%) fixed !important;
+  min-height: 100vh;
+  color: inherit !important;
+}
+
+/* 主要容器 - 增强液态玻璃效果 */
+body.transparent-mode:not(.dark) .min-h-screen {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 16px !important;
+  margin: 5px !important;
+}
+
+/* 侧边栏液态玻璃效果 */
+body.transparent-mode:not(.dark) .border-r {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 16px 0 0 16px !important;
+  margin: 5px 0 5px 5px !important;
+}
+
+/* 任务项和卡片的液态玻璃效果 */
+body.transparent-mode:not(.dark) .bg-white,
+body.transparent-mode:not(.dark) .task-item,
+body.transparent-mode:not(.dark) .card,
+body.transparent-mode:not(.dark) .modal,
+body.transparent-mode:not(.dark) .dialog,
+body.transparent-mode:not(.dark) .dropdown,
+body.transparent-mode:not(.dark) header,
+body.transparent-mode:not(.dark) .title-bg,
+body.transparent-mode:not(.dark) .heading,
+body.transparent-mode:not(.dark) .navbar {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1) !important;
+  color: inherit !important;
+  transition: all 0.3s ease !important;
+  border-radius: 12px !important;
+}
+
+body.transparent-mode:not(.dark) .bg-white:hover,
+body.transparent-mode:not(.dark) .task-item:hover {
+  background: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px) !important;
 }
 
 /* 灰色背景元素的液态玻璃效果 */
-.transparent-mode:not(.dark) .bg-gray-50 {
-  background: rgba(255, 255, 255, 0.4) !important;
-  backdrop-filter: blur(15px) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+body.transparent-mode:not(.dark) .bg-gray-50,
+body.transparent-mode:not(.dark) .bg-gray-100,
+body.transparent-mode:not(.dark) .bg-gray-200 {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  border-radius: 12px !important;
 }
 
 /* 输入框和按钮的液态玻璃效果 */
-.transparent-mode:not(.dark) input,
-.transparent-mode:not(.dark) select,
-.transparent-mode:not(.dark) button,
-.transparent-mode:not(.dark) .date-navigation,
-.transparent-mode:not(.dark) .search-input,
-.transparent-mode:not(.dark) .filter-buttons {
-  background: rgba(255, 255, 255, 0.5) !important;
-  backdrop-filter: blur(15px) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
-  color: inherit !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
-  transition: all 0.2s ease !important;
+body.transparent-mode:not(.dark) input,
+body.transparent-mode:not(.dark) select,
+body.transparent-mode:not(.dark) button,
+body.transparent-mode:not(.dark) .date-navigation,
+body.transparent-mode:not(.dark) .search-input,
+body.transparent-mode:not(.dark) .filter-buttons,
+body.transparent-mode:not(.dark) .task-status-filter,
+body.transparent-mode:not(.dark) .time-range-picker,
+body.transparent-mode:not(.dark) .shortcut-display,
+body.transparent-mode:not(.dark) textarea,
+body.transparent-mode:not(.dark) .input-group {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  color: #2d3748 !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s ease !important;
+  border-radius: 10px !important;
 }
 
-.transparent-mode:not(.dark) input:focus,
-.transparent-mode:not(.dark) select:focus {
-  border-color: rgba(59, 130, 246, 0.8) !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+body.transparent-mode:not(.dark) input:focus,
+body.transparent-mode:not(.dark) select:focus {
+  border-color: rgba(59, 130, 246, 0.9) !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3) !important;
   outline: none !important;
+  background: rgba(255, 255, 255, 0.9) !important;
 }
 
-.transparent-mode:not(.dark) button:hover {
-  background: rgba(255, 255, 255, 0.7) !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1) !important;
-  transform: translateY(-1px) !important;
+body.transparent-mode:not(.dark) button:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px) !important;
 }
 
 /* 深色模式基础样式 - 优先处理 */
@@ -252,77 +572,98 @@
 }
 
 /* 深色模式下的液态玻璃效果 */
-.transparent-mode.dark .min-h-screen {
-  background: rgba(30, 41, 59, 0.6) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+.dark body.transparent-mode {
+  background: linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #0a2540 100%) fixed !important;
 }
 
-/* 深色模式侧边栏 */
-.transparent-mode.dark .border-r {
+.dark body.transparent-mode .min-h-screen {
   background: rgba(30, 41, 59, 0.7) !important;
   backdrop-filter: blur(25px) !important;
   -webkit-backdrop-filter: blur(25px) !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* 深色模式任务项和卡片 */
-.transparent-mode.dark .bg-white,
-.transparent-mode.dark .task-item,
-.transparent-mode.dark .bg-gray-50,
-.transparent-mode.dark .bg-gray-900,
-.transparent-mode.dark .bg-gray-800 {
-  background: rgba(30, 41, 59, 0.55) !important;
-  backdrop-filter: blur(15px) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
-  color: inherit !important;
-}
-
-.transparent-mode.dark .bg-white:hover,
-.transparent-mode.dark .task-item:hover {
-  background: rgba(30, 41, 59, 0.75) !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25) !important;
-  transform: translateY(-1px) !important;
-}
-
-/* 深色模式输入框和按钮 */
-.transparent-mode.dark input,
-.transparent-mode.dark select,
-.transparent-mode.dark button,
-.transparent-mode.dark .date-navigation,
-.transparent-mode.dark .search-input,
-.transparent-mode.dark .filter-buttons,
-.transparent-mode.dark .task-status-filter,
-.transparent-mode.dark .time-range-picker,
-.transparent-mode.dark .shortcut-display {
-  background: rgba(30, 41, 59, 0.6) !important;
-  backdrop-filter: blur(15px) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
-  color: #e2e8f0 !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25) !important;
+  border-radius: 12px !important;
+  margin: 5px !important;
 }
 
-.transparent-mode.dark input:focus,
-.transparent-mode.dark select:focus {
-  border-color: rgba(59, 130, 246, 0.6) !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
-  outline: none !important;
-}
-
-.transparent-mode.dark button:hover {
+/* 深色模式侧边栏 */
+.dark body.transparent-mode .border-r {
   background: rgba(30, 41, 59, 0.8) !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2) !important;
-  transform: translateY(-1px) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.25) !important;
+  border-radius: 12px 0 0 12px !important;
+}
+
+/* 深色模式任务项和卡片 - 与绿色主题协调 */
+.dark body.transparent-mode .bg-white,
+.dark body.transparent-mode .task-item,
+.dark body.transparent-mode .bg-gray-50,
+.dark body.transparent-mode .bg-gray-900,
+.dark body.transparent-mode .bg-gray-800,
+.dark body.transparent-mode .card,
+.dark body.transparent-mode .modal,
+.dark body.transparent-mode .dialog,
+.dark body.transparent-mode .dropdown,
+.dark body.transparent-mode header,
+.dark body.transparent-mode .title-bg,
+.dark body.transparent-mode .heading,
+.dark body.transparent-mode .navbar {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+}
+
+.dark body.transparent-mode .bg-white:hover,
+.dark body.transparent-mode .task-item:hover {
+  background: rgba(30, 41, 59, 0.9) !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 深色模式输入框和按钮的液态玻璃效果 - 半透明白色风格 */
+.dark body.transparent-mode input,
+.dark body.transparent-mode select,
+.dark body.transparent-mode button,
+.dark body.transparent-mode .date-navigation,
+.dark body.transparent-mode .search-input,
+.dark body.transparent-mode .filter-buttons,
+.dark body.transparent-mode .task-status-filter,
+.dark body.transparent-mode .time-range-picker,
+.dark body.transparent-mode .shortcut-display,
+.dark body.transparent-mode textarea,
+.dark body.transparent-mode .input-group {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.3s ease !important;
+  border-radius: 10px !important;
+}
+
+.dark body.transparent-mode input:focus,
+.dark body.transparent-mode select:focus {
+  border-color: rgba(59, 130, 246, 0.9) !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25) !important;
+  outline: none !important;
+  background: rgba(45, 55, 72, 0.9) !important;
+}
+
+.dark body.transparent-mode button:hover {
+  background: rgba(45, 55, 72, 0.9) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-2px) !important;
 }
 
 /* 深色模式日期选择器样式 */
-.transparent-mode.dark .react-datepicker {
+.dark body.transparent-mode .react-datepicker {
   background: rgba(30, 41, 59, 0.8) !important;
   backdrop-filter: blur(15px) !important;
   -webkit-backdrop-filter: blur(15px) !important;
@@ -330,34 +671,34 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25) !important;
 }
 
-.transparent-mode.dark .react-datepicker__header {
+.dark body.transparent-mode .react-datepicker__header {
   background: rgba(30, 41, 59, 0.85) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-.transparent-mode.dark .react-datepicker__day,
-.transparent-mode.dark .react-datepicker__month-text,
-.transparent-mode.dark .react-datepicker__quarter-text,
-.transparent-mode.dark .react-datepicker__year-text {
+.dark body.transparent-mode .react-datepicker__day,
+.dark body.transparent-mode .react-datepicker__month-text,
+.dark body.transparent-mode .react-datepicker__quarter-text,
+.dark body.transparent-mode .react-datepicker__year-text {
   color: #e2e8f0 !important;
 }
 
-.transparent-mode.dark .react-datepicker__day:hover,
-.transparent-mode.dark .react-datepicker__month-text:hover,
-.transparent-mode.dark .react-datepicker__quarter-text:hover,
-.transparent-mode.dark .react-datepicker__year-text:hover {
+.dark body.transparent-mode .react-datepicker__day:hover,
+.dark body.transparent-mode .react-datepicker__month-text:hover,
+.dark body.transparent-mode .react-datepicker__quarter-text:hover,
+.dark body.transparent-mode .react-datepicker__year-text:hover {
   background: rgba(59, 130, 246, 0.1) !important;
   color: #f1f5f9 !important;
 }
 
-.transparent-mode.dark .react-datepicker__day--selected {
+.dark body.transparent-mode .react-datepicker__day--selected {
   background: rgba(59, 130, 246, 0.7) !important;
   color: white !important;
 }
 
 /* 深色模式设置页面样式 */
-.transparent-mode.dark .settings-container,
-.transparent-mode.dark .settings-page {
+.dark body.transparent-mode .settings-container,
+.dark body.transparent-mode .settings-page {
   background: rgba(30, 41, 59, 0.65) !important;
   backdrop-filter: blur(25px) !important;
   -webkit-backdrop-filter: blur(25px) !important;
@@ -367,10 +708,10 @@
 }
 
 /* 深色模式卡片和弹窗样式 */
-.transparent-mode.dark .card,
-.transparent-mode.dark .modal,
-.transparent-mode.dark .dialog,
-.transparent-mode.dark .dropdown {
+.dark body.transparent-mode .card,
+.dark body.transparent-mode .modal,
+.dark body.transparent-mode .dialog,
+.dark body.transparent-mode .dropdown {
   background: rgba(30, 41, 59, 0.75) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
@@ -498,42 +839,78 @@
   transition: all 0.3s ease;
 }
 
-/* 滚动条样式优化 */
+/* 进度条和滚动条的液态玻璃效果 */
 .transparent-mode ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-/* 浅色模式滚动条 */
-.transparent-mode:not(.dark) ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(4px);
+.transparent-mode ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-radius: 10px !important;
 }
 
-.transparent-mode:not(.dark) ::-webkit-scrollbar-thumb {
-  background: rgba(156, 163, 175, 0.3);
-  border-radius: 4px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-}
-
-/* 深色模式滚动条 */
-.transparent-mode.dark ::-webkit-scrollbar-track {
-  background: rgba(30, 41, 59, 0.3);
-  backdrop-filter: blur(4px);
-}
-
-.transparent-mode.dark ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-  border: 2px solid rgba(30, 41, 59, 0.5);
+.transparent-mode ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-radius: 10px !important;
+  transition: all 0.3s ease !important;
 }
 
 .transparent-mode ::-webkit-scrollbar-thumb:hover {
-  background: rgba(156, 163, 175, 0.5);
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.transparent-mode.dark ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.transparent-mode.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2) !important;
 }
 
 .transparent-mode.dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* 进度条样式 */
+.transparent-mode .progress-bar,
+.transparent-mode .progress {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-radius: 10px !important;
+}
+
+.transparent-mode.dark .progress-bar,
+.transparent-mode.dark .progress {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 工具提示和弹出层的液态玻璃效果 */
+.transparent-mode .tooltip,
+.transparent-mode .popover,
+.transparent-mode .alert,
+.transparent-mode .notification {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+.transparent-mode.dark .tooltip,
+.transparent-mode.dark .popover,
+.transparent-mode.dark .alert,
+.transparent-mode.dark .notification {
+  background: rgba(30, 41, 59, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* 确保文字清晰可读但不强制改变原有颜色 */

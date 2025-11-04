@@ -99,7 +99,7 @@ const Navigation = forwardRef(({
         className={`
           ${isCollapsed ? 'w-16' : 'w-64'} 
           fixed inset-y-0 left-0 z-40 overflow-hidden
-          ${isTransparentMode ? 'bg-white/80 backdrop-blur-md' : 'bg-white'} dark:bg-gray-800
+          ${isTransparentMode ? 'glass-sidebar' : 'bg-white'} dark:bg-gray-800
           border-r border-gray-200 dark:border-gray-700 h-full flex flex-col
           transition-all duration-300 ease-in-out
           

@@ -42,9 +42,14 @@ const TaskItem = ({ task, onToggleComplete, onDelete, onEdit, onTogglePin, onTog
     return due < compareDate && !task.completed;
   };
 
+  // 从body元素获取透明模式状态
+  const isTransparentMode = document.body.classList.contains('transparent-mode');
+
   return (
     <div className={`p-3 border rounded-lg shadow-sm transition-all duration-200 hover:shadow-md ${
-      task.completed ? 'bg-gray-50 opacity-75' : 'bg-white'
+      isTransparentMode 
+        ? task.completed ? 'bg-gray-50/80 backdrop-blur-sm opacity-75 border-gray-200/50' : 'glass-card'
+        : task.completed ? 'bg-gray-50 opacity-75' : 'bg-white'
     } ${task.isPinned ? 'border-l-4 border-l-blue-500' : ''}`}>
       <div className="flex items-start justify-between">
         <div className="flex items-start space-x-2 flex-1">

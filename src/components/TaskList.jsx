@@ -63,7 +63,7 @@ const TaskList = ({
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="搜索任务..."
-            className="w-full pl-8 pr-3 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+            className="w-full pl-8 pr-3 py-1.5 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm glass-input"
           />
         </div>
         
@@ -72,7 +72,7 @@ const TaskList = ({
           <select
             value={filterType}
             onChange={(e) => onFilterChange(e.target.value)}
-            className="px-2 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+            className="px-2 py-1.5 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm glass-input"
           >
             <option value="all">全部任务</option>
             <option value="pending">待完成</option>

@@ -9,14 +9,16 @@ import TaskList from './components/TaskList';
 import PriorityView from './components/PriorityView';
 import StatusView from './components/StatusView';
 import Settings from './pages/Settings';
+import SidebarModal from './components/SidebarModal';
 import { ToastProvider } from './components/ui/toast';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { format, addDays, subDays } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 import taskMonitor from './utils/taskMonitor';
-
-const queryClient = new QueryClient();
+  // 导入GlassTestPage组件用于测试页面渲染
+  import GlassTestPage from './test/GlassTestPage.jsx';
+  const queryClient = new QueryClient();
 
 function TodoApp() {
   const {
@@ -43,6 +45,7 @@ function TodoApp() {
   const [showSettings, setShowSettings] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   // 侧边栏引用
   const navigationRef = useRef(null);
   // 布局设置
@@ -59,6 +62,16 @@ function TodoApp() {
     completed: tasks.filter(t => t.completed).length
   };
 
+  // 打开侧边栏
+  const openSidebar = () => {
+    setIsSidebarOpen(true);
+  };
+
+  // 关闭侧边栏
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+  };
+
   // 主题切换
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -71,22 +84,22 @@ function TodoApp() {
   // 护眼模式切换
   useEffect(() => {
     if (isEyeProtectionMode) {
-      document.documentElement.classList.add('eye-protection');
+      document.body.classList.add('eye-protection');
       // 关闭深色模式，但保留透明模式
       document.documentElement.classList.remove('dark');
       setIsDarkMode(false);
     } else {
-      document.documentElement.classList.remove('eye-protection');
+      document.body.classList.remove('eye-protection');
     }
   }, [isEyeProtectionMode]);
 
   // 透明模式切换
   useEffect(() => {
     if (isTransparentMode) {
-      document.documentElement.classList.add('transparent-mode');
+      document.body.classList.add('transparent-mode');
       // 移除强制关闭深色模式的代码，允许透明模式和深色模式共存
     } else {
-      document.documentElement.classList.remove('transparent-mode');
+      document.body.classList.remove('transparent-mode');
     }
   }, [isTransparentMode]);
   
@@ -275,11 +288,7 @@ function TodoApp() {
   };
 
   const handleToggleTransparentMode = () => {
-    // 如果当前是深色模式或护眼模式，先关闭它们
-    if (isDarkMode) {
-      setIsDarkMode(false);
-      document.documentElement.classList.remove('dark');
-    }
+    // 只关闭护眼模式，允许透明模式和深色模式共存
     if (isEyeProtectionMode) {
       setIsEyeProtectionMode(false);
     }
@@ -407,6 +416,14 @@ function TodoApp() {
 
   // 渲染主内容
   const renderContent = () => {
+    // 根据当前路径进行简单的条件渲染
+    const currentPath = window.location.pathname;
+    
+    // 如果是玻璃效果测试页面，直接渲染GlassTestPage组件
+    if (currentPath === '/glass-test') {
+      return <GlassTestPage />;
+    }
+    
     if (showSettings) {
       return (
         <Settings 
@@ -431,51 +448,31 @@ function TodoApp() {
     switch (activeView) {
       case 'status':
         return (
-          <>
-            {/* 移动端菜单按钮 - 调整位置避免覆盖内容 */}
-            <button
-              onClick={() => navigationRef.current?.toggleMobileMenu?.()}
-              className="lg:hidden fixed top-4 right-4 z-50 p-2 bg-white dark:bg-gray-800 rounded-lg shadow-md"
-              aria-label="打开菜单"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
-            <StatusView
+          <StatusView
+            tasks={tasksForDate}
+            onToggleComplete={toggleTaskComplete}
+            onDelete={handleDeleteTask}
+            onEdit={handleEditTask}
+            onTogglePin={toggleTaskPin}
+            onToggleRecurring={toggleTaskRecurring}
+            selectedDate={selectedDate}
+          />
+        );
+      default:
+        return (
+          <TaskList
               tasks={tasksForDate}
               onToggleComplete={toggleTaskComplete}
               onDelete={handleDeleteTask}
               onEdit={handleEditTask}
               onTogglePin={toggleTaskPin}
               onToggleRecurring={toggleTaskRecurring}
+              searchTerm={searchTerm}
+              onSearchChange={setSearchTerm}
+              filterType={filterType}
+              onFilterChange={setFilterType}
               selectedDate={selectedDate}
             />
-          </>
-        );
-      default:
-        return (
-          <>
-            {/* 移动端菜单按钮 - 调整位置避免覆盖内容 */}
-            <button
-              onClick={() => navigationRef.current?.toggleMobileMenu?.()}
-              className="lg:hidden fixed top-4 right-4 z-50 p-2 bg-white dark:bg-gray-800 rounded-lg shadow-md"
-              aria-label="打开菜单"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
-            <TaskList
-                tasks={tasksForDate}
-                onToggleComplete={toggleTaskComplete}
-                onDelete={handleDeleteTask}
-                onEdit={handleEditTask}
-                onTogglePin={toggleTaskPin}
-                onToggleRecurring={toggleTaskRecurring}
-                searchTerm={searchTerm}
-                onSearchChange={setSearchTerm}
-                filterType={filterType}
-                onFilterChange={setFilterType}
-                selectedDate={selectedDate}
-              />
-          </>
         );
     }
   };
@@ -493,13 +490,31 @@ function TodoApp() {
 
   return (
     <ToastProvider>
-      <div className={`min-h-screen ${isEyeProtectionMode ? 'bg-[#f5f5dc]' : 'bg-gray-50'} dark:bg-gray-900`}>
+      <div className={`min-h-screen ${isEyeProtectionMode ? 'bg-[#f5f5dc]' : 'bg-gray-50'} dark:bg-gray-900 ${isTransparentMode ? 'transparent-mode' : ''} ${isTransparentMode && isDarkMode ? 'dark' : ''}`}>
         <div className="flex h-screen">
-
+          {/* 移动端菜单按钮 */}
+          <button
+            onClick={() => isSidebarOpen ? closeSidebar() : openSidebar()}
+            className="lg:hidden fixed top-4 right-4 z-50 p-2 bg-white dark:bg-gray-800 rounded-lg shadow-md"
+            aria-label="打开菜单"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
           
-          {/* 左侧导航 - 使用ref来控制 */}
-          <Navigation
-            ref={navigationRef}
+          {/* 侧边栏触发按钮 - 桌面端显示，向下调整50px */}
+          <button
+            onClick={() => isSidebarOpen ? closeSidebar() : openSidebar()}
+            className="hidden lg:block fixed top-32 left-4 z-30 p-2 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            aria-label="打开菜单"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+
+          {/* 弹出式侧边栏 */}
+          <SidebarModal
+            isOpen={isSidebarOpen}
+            onClose={closeSidebar}
+            onOpen={openSidebar}
             activeView={activeView}
             onViewChange={setActiveView}
             taskCounts={taskCounts}
@@ -553,7 +568,7 @@ function TodoApp() {
                       onChange={handleDateChange}
                       dateFormat="yyyy年MM月dd日"
                       locale={zhCN}
-                      className="px-2 py-1 text-xs border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="px-2 py-1 text-xs rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent glass-input"
                     />
                     <button
                       onClick={goToNextDay}
@@ -589,7 +604,7 @@ function TodoApp() {
                 {/* 编辑任务表单 */}
                 {editingTask && (
                   <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-                  <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 max-w-md w-full ${density === 'compact' ? 'p-3' : density === 'spacious' ? 'p-6' : 'p-4'}`}>
+                    <div className={`${isTransparentMode ? 'glass-card' : 'bg-white dark:bg-gray-800'} rounded-lg shadow-lg p-4 max-w-md w-full ${density === 'compact' ? 'p-3' : density === 'spacious' ? 'p-6' : 'p-4'}`}>
                       <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-white">编辑任务</h3>
                       <EditTaskForm
                         task={editingTask}
@@ -606,7 +621,7 @@ function TodoApp() {
                 {/* 删除确认弹窗 */}
                 {showDeleteConfirm && (
                   <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-                  <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 max-w-md w-full ${density === 'compact' ? 'p-3' : density === 'spacious' ? 'p-6' : 'p-4'}`}>
+                    <div className={`${isTransparentMode ? 'glass-card' : 'bg-white dark:bg-gray-800'} rounded-lg shadow-lg p-4 max-w-md w-full ${density === 'compact' ? 'p-3' : density === 'spacious' ? 'p-6' : 'p-4'}`}>
                       <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">确认删除</h3>
                       <p className="text-gray-700 dark:text-gray-300 mb-4">您确定要删除这个任务吗？此操作无法撤销。</p>
                       <div className="flex justify-end space-x-2">

@@ -44,6 +44,9 @@ const EditTaskForm = ({ task, onSave, onCancel }) => {
     onSave(updatedTask);
   };
 
+  // 从body元素获取透明模式状态
+  const isTransparentMode = document.body.classList.contains('transparent-mode');
+
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
@@ -56,7 +59,7 @@ const EditTaskForm = ({ task, onSave, onCancel }) => {
           value={formData.content}
           onChange={(e) => handleInputChange('content', e.target.value)}
           placeholder="输入任务内容..."
-          className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+          className="w-full p-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm glass-input"
           autoFocus
         />
       </div>
@@ -67,7 +70,7 @@ const EditTaskForm = ({ task, onSave, onCancel }) => {
           <select
             value={formData.priority}
             onChange={(e) => handleInputChange('priority', e.target.value)}
-            className="px-2 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+            className="px-2 py-1.5 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm glass-input"
           >
             <option value="low">低优先级</option>
             <option value="medium">中优先级</option>
@@ -81,7 +84,7 @@ const EditTaskForm = ({ task, onSave, onCancel }) => {
             type="date"
             value={formData.dueDate}
             onChange={(e) => handleInputChange('dueDate', e.target.value)}
-            className="px-2 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+            className="px-2 py-1.5 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm glass-input"
           />
         </div>
       </div>
@@ -114,7 +117,7 @@ const EditTaskForm = ({ task, onSave, onCancel }) => {
             <select
               value={formData.recurringType}
               onChange={(e) => handleInputChange('recurringType', e.target.value)}
-              className="px-2 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+              className="px-2 py-1.5 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm glass-input"
             >
               <option value="daily">每日</option>
               <option value="weekly">每周</option>
