@@ -99,15 +99,10 @@ const Settings = ({ navigationRef, isDarkMode: propDarkMode, onToggleTheme, isEy
     }
   };
 
-  // 移动端菜单按钮点击处理函数，用于打开侧边栏
+  // 打开/关闭移动端菜单
   const toggleMobileMenu = () => {
-    try {
-      if (navigationRef && navigationRef.current && typeof navigationRef.current.toggleMobileMenu === 'function') {
-        navigationRef.current.toggleMobileMenu();
-      }
-    } catch (error) {
-      console.error('切换移动菜单失败:', error);
-    }
+    // 触发全局事件通知App组件切换侧边栏状态
+    window.dispatchEvent(new CustomEvent('toggleSidebar'));
   };
 
   return (

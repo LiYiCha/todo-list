@@ -191,12 +191,23 @@ function TodoApp() {
       handleSettingsChange(settings);
     };
     
+    // 监听切换侧边栏事件
+    const handleToggleSidebar = () => {
+      if (isSidebarOpen) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    };
+    
     window.addEventListener('personalizationChanged', handlePersonalizationChange);
+    window.addEventListener('toggleSidebar', handleToggleSidebar);
     
     return () => {
       window.removeEventListener('personalizationChanged', handlePersonalizationChange);
+      window.removeEventListener('toggleSidebar', handleToggleSidebar);
     };
-  }, []);
+  }, [isSidebarOpen]);
   // 处理设置变更
   const handleSettingsChange = (settings) => {
     try {
